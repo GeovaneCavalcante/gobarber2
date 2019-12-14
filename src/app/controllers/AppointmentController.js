@@ -7,7 +7,6 @@ import User from '../models/User';
 import File from '../models/File';
 import Notification from '../schemas/Notification';
 
-import Mail from '../lib/Mail';
 import Queue from '../lib/Queue';
 import CancellationMail from '../jobs/CancellationMail';
 
@@ -20,7 +19,7 @@ class AppointmentController {
         user_id: req.userId,
         canceled_at: null,
       },
-      attributes: ['id', 'date'],
+      attributes: ['id', 'date', 'past', 'cancelable'],
       order: ['date'],
       limit: 20,
       offset: (page - 1) * 20,
